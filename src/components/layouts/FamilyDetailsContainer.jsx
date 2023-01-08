@@ -68,7 +68,7 @@ export const FamilyDetailsContainer = () => {
             backgroundColor:'#d2d2d2',
             borderRadius:'20px',
             padding:'20px'
-            //border : '2px solid black'
+            
         }}
     >
 

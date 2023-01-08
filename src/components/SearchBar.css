@@ -3,7 +3,7 @@ $input-background: rgba(57, 63, 84, 0.8);
 $input-text-inactive: #7881A1;
 $input-text-active: #BFD2FF;
 
-// gradient animation
+
 @keyframes gradient { 
   0%{background-position:0 0}
   100%{background-position:100% 0}

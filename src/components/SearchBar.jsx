@@ -16,67 +16,13 @@ export default function SearchBar(props) {
      const [searchText,setSearchTextState]= useFilteredIdState();
 
      
-    //const {searchLogic}=SearchFamily({searchText});
+   
     const contains = (text, searchText) => {
         console.log(text,"THIS IS WHAT I AM SEARCHING FOR ",searchText, "type of",typeof(searchText));
         if(text===undefined||searchText===undefined)return true;
         return ( (text.toLowerCase().indexOf(searchText.toLowerCase()) >= 0) || searchText===" ");
     }
-    const searchLogic=(searchText)=>{
-            
-
-            console.log("THIS IS THE UPDATED SEARCH TERM",searchText);
-               
-               
-                var filtered = new Set();
-
-                //true means it shold not add righj
-                //false means it shsould
-                const recur=(family)=>{
-                   
-                    if(family==='undefined')return false;
-
-                    console.log("RECURSION HAPPENING ",family);
-
-                    const id=family.id;
-
-                    var containChild=false; 
-                        if (contains(family.Name, searchText)) {
-                           
-                       
-                            console.log("adding this");
-                            filtered.add(id);
-                            containChild=true;
-
-                        } 
-
-                        if (family?.children) {
-
-                           
-                            console.log(Object.entries(family.children),"CHILLDREN of",family.Name);
-
-                            for( const [key,val] of Object.entries(family.children)){
-                                console.log("INSIDE ",val);
-                                containChild|=recur(val);
-                            }
-                            if(containChild){
-                                filtered.add(id);
-                                return true;
-                            }
-                           
-                        }
-                        return containChild;
-                       
-                        
-                }
-                const ret=recur(treeState);
-                console.log("this is what i am returning ",filtered);
-                setFilteredIdState(filtered);
-                return filtered;
-                
-                
-            
-    }
+    
 
     const searchLogicReverse=(searchText)=>{
             
@@ -86,7 +32,7 @@ export default function SearchBar(props) {
            
             var filtered = new Set();
 
-            //true means it shold not add righj
+            //true means it shold not add to the set
             //false means it shsould
             const recur=(family)=>{
                
@@ -96,24 +42,17 @@ export default function SearchBar(props) {
 
                 const id=family.id;
                 
-                //initially i wil  say that it will be rejected
+               
                 var containChild=true;
 
                     if (contains(family.Name, searchText)) {
-                        
-                        //ok this muight be rejected but i have to still search throguth its child
-
-                   
-                        // console.log("adding this");
-                        // filtered.add(id);
-                        //means that it will not be in rejected class
+            
                         containChild=false;
-                        //but its child still needs to be filtered through
+                       
                     }
 
                     if (family?.children) {
-
-                       
+                 
                         console.log(Object.entries(family.children),"CHILLDREN of",family.Name);
 
                         for( const [key,val] of Object.entries(family.children)){
@@ -125,12 +64,12 @@ export default function SearchBar(props) {
                        
                     }
                     if(containChild){
-                        console.log("WAIT I AM ADDING ID OF ",family.Name);
+                      
                         filtered.add(id);
                         
                     }
                     
-                    console.log("value of containChild at ",family.Name, " ",containChild);
+                   
                     return containChild;
                    
                     
@@ -138,7 +77,7 @@ export default function SearchBar(props) {
             const ret=recur(treeState);
            
             setFilteredIdState(filtered);
-            console.log("this is what i am returning AS FILTERED STATE ",filtered);
+           
             return filtered;
             
             
@@ -146,18 +85,11 @@ export default function SearchBar(props) {
     }
     
     console.log("THIS IS THE SEARCH TERM HERE IN COL",searchText);
-    // const handleSearch=(e)=>{
-        
-    //     setSearchTextState(e.target.value)
-        
-    //     console.log("TERM IS CHANGED to",searchText);
-    //     searchLogic(searchText);
-    // }
+   
     const handleFilter=(e)=>{
         setSearchTextState(e.target.value);
-       // setsearchText(e.target.value);
-       console.log("SO THIS IS GETTING CALLED OR NOT?")
-       // searchLogic(e.target.value);
+     
+      
         searchLogicReverse(e.target.value);
     }
 
@@ -174,7 +106,7 @@ export default function SearchBar(props) {
             height: '0px',
             boxShadow:'0 1px 2px 1px #8789f3',
             width:'100%',
-            //margin:'auto auto'
+          
             }}/>
               
             <input  id="input"  type="text" placeholder='Search Family Member' onChange={handleFilter}/>

@@ -9,8 +9,7 @@ export const SidePanel = () => {
         <div 
             className='tree' 
             style={{
-                //border: '2px solid black',
-                //height: '100vh',
+            
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'start',
