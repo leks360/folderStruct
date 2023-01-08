@@ -1,3 +1,5 @@
+import { red } from '@mui/material/colors'
+import { borderRadius } from '@mui/system'
 import React from 'react'
 import { useSelectedNodeState } from '../../contexts'
 import { initialFamilyInfoState } from '../../utils'
@@ -63,10 +65,24 @@ export const FamilyDetailsContainer = () => {
     <div
         style={{
             flexGrow: '1',
-            border : '2px solid black'
+            backgroundColor:'#d2d2d2',
+            borderRadius:'20px',
+            padding:'20px'
+            //border : '2px solid black'
         }}
     >
-        <LayoutHeader header={'Family Details'} />
+
+        <LayoutHeader style={{marginTop:'12px'}}header={'Family Details'} />
+        <hr style={{
+            border:'none',
+            marginTop:'15px',
+            
+            height: '0px',
+            boxShadow:'0 1px 2px 1px #8789f3',
+            width:'95%',
+            margin:'auto auto'
+         }}/>
+
         <FamilyDetails/>
     </div>
   )

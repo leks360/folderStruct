@@ -21,15 +21,9 @@ export const FolderNode = ({node, depth, ancentors = []}) => {
 
     const [anchor,setAnchor]=useState();
 
-    useEffect(()=>{
-      console.log("CHANGE UPDATE MAN");
-      
-    },[searchText]);
+   
 
-    const handleContextMenu = e => {
-      e.preventDefault()
-      setSelectedNode({...node, ancentors: ancentorsRef.current})
-    }
+    
 
     const isItInSearch=(family)=>{
      
@@ -68,8 +62,8 @@ export const FolderNode = ({node, depth, ancentors = []}) => {
 
               
             >
-
-              {isItInSearch(node) &&
+            
+              {!isItInSearch(node) &&
                     <>
                     {node.children ? open? <FaChevronDown style={{marginRight: '4px'}} fontSize={'8px'} /> : <FaChevronRight style={{marginRight: '4px'}} fontSize={'8px'} /> : <></>}
                     <FaFolder style={{marginLeft : node.children ? 0 : '15px', color: 'yellow'}} />

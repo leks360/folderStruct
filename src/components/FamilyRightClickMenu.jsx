@@ -31,10 +31,7 @@ export function FamilyRightClickMenu({anchorEl,setAnchorEl,depth}) {
         setTreeViewToggle(false);
     }
 
-    const handleClick = (event) => {
-      console.log(event.currentTarget)
-      setAnchorEl(event.currentTarget);
-    };
+  
     const handleClose = () => {
      
       setAnchorEl(null);
@@ -43,16 +40,7 @@ export function FamilyRightClickMenu({anchorEl,setAnchorEl,depth}) {
     return (
         <>
       <div>
-       
-        {/* <Button
-            id="basic-button"
-            aria-controls={open ? 'basic-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
-        >
-            Dashboard
-        </Button> */}
+     
         
         <Menu
           sx={{

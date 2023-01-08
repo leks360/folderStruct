@@ -29,6 +29,9 @@ export default function SearchBar(props) {
                
                
                 var filtered = new Set();
+
+                //true means it shold not add righj
+                //false means it shsould
                 const recur=(family)=>{
                    
                     if(family==='undefined')return false;
@@ -74,6 +77,73 @@ export default function SearchBar(props) {
                 
             
     }
+
+    const searchLogicReverse=(searchText)=>{
+            
+
+        console.log("THIS IS THE UPDATED SEARCH TERM",searchText);
+           
+           
+            var filtered = new Set();
+
+            //true means it shold not add righj
+            //false means it shsould
+            const recur=(family)=>{
+               
+                if(family==='undefined')return false;
+
+                console.log("RECURSION HAPPENING ",family);
+
+                const id=family.id;
+                
+                //initially i wil  say that it will be rejected
+                var containChild=true;
+
+                    if (contains(family.Name, searchText)) {
+                        
+                        //ok this muight be rejected but i have to still search throguth its child
+
+                   
+                        // console.log("adding this");
+                        // filtered.add(id);
+                        //means that it will not be in rejected class
+                        containChild=false;
+                        //but its child still needs to be filtered through
+                    }
+
+                    if (family?.children) {
+
+                       
+                        console.log(Object.entries(family.children),"CHILLDREN of",family.Name);
+
+                        for( const [key,val] of Object.entries(family.children)){
+                            console.log("INSIDE ",val);
+                            containChild&=recur(val);
+                        }
+                       
+                        
+                       
+                    }
+                    if(containChild){
+                        console.log("WAIT I AM ADDING ID OF ",family.Name);
+                        filtered.add(id);
+                        
+                    }
+                    
+                    console.log("value of containChild at ",family.Name, " ",containChild);
+                    return containChild;
+                   
+                    
+            }
+            const ret=recur(treeState);
+           
+            setFilteredIdState(filtered);
+            console.log("this is what i am returning AS FILTERED STATE ",filtered);
+            return filtered;
+            
+            
+        
+    }
     
     console.log("THIS IS THE SEARCH TERM HERE IN COL",searchText);
     // const handleSearch=(e)=>{
@@ -87,21 +157,27 @@ export default function SearchBar(props) {
         setSearchTextState(e.target.value);
        // setsearchText(e.target.value);
        console.log("SO THIS IS GETTING CALLED OR NOT?")
-        searchLogic(e.target.value);
+       // searchLogic(e.target.value);
+        searchLogicReverse(e.target.value);
     }
 
-    // useEffect(()=>{
-    //     console.log("SO THIS IS CALLING USEEFFETC IN SERAHC ")
-    //     searchLogic(searchText);
-    // },[searchText]);
+ 
 
     return (
         <>
             <LayoutHeader header={'Family Tree'} />
-                {/* <TextField  sx={{marginLeft:"10px",marginTop:"20px",marginBottom:"20px"}} size="small" id="outlined-basic" 
-                defaultValue="Small" label="Search Family Member" variant="outlined"  onChange={(e)=>{console.log(e.target.value);setSearchTextState(e.target.value)}} />
-                 */}
-            <input  id="input" class="" type="text" onChange={handleFilter}/>
+            
+            <hr style={{
+            border:'none',
+            marginTop:'10px',
+            marginBottom:"20px",
+            height: '0px',
+            boxShadow:'0 1px 2px 1px #8789f3',
+            width:'100%',
+            //margin:'auto auto'
+            }}/>
+              
+            <input  id="input"  type="text" placeholder='Search Family Member' onChange={handleFilter}/>
           
            
 

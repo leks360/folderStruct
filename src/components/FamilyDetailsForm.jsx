@@ -22,10 +22,7 @@ export const FamilyDetailsForm = ({handleClose = () => {}}) => {
   
   const [term,setTerm]=useSearchTextState();
 
-  // const HandleSubmit=()=>{
-  //   addFamily();
-  //   setTerm(term)
-  // }
+
   return (
     <Box sx={style}>
         <form 

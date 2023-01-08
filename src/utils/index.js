@@ -34,19 +34,17 @@ export const useDeleteFamily=(afterAdding = () => {})=>{
       let currentNode=clone;
       selectedNode.ancentors.forEach((node, i)=> {
         if(i !== 0){
-          console.log(node,"this is the flow of ancestor ",i);
+          // console.log(node,"this is the flow of ancestor ",i);
           let parent=currentNode;
           currentNode = currentNode.children[node];
           if(currentNode.id==uId){
-            console.log("THIS IS GOING TO DELETE",parent, "this is is the uid ",uId);
+            
             delete parent.children[uId];
           }
         }
       });
-      console.log(clone,'THIS IS GOING TO RETURN THIS');
-      // console.log(currentNode);
-      // console.log(currentNode.children);
-      // currentNode=undefined;
+    
+    
       return clone
     })
    
@@ -66,8 +64,7 @@ export const useAddFamily = ({initialFamilyInfoState, afterAdding = () => {}, })
   
     const [selectedNode] = useSelectedNodeState()
     const [treeState, setTreeDataState] = useTreeState()
-    const [SearchText,setSearchText]=useSearchTextState();
-    const [filteredId,setFilteredId]=useFilteredIdState();
+    
     
     const addFamily = (e) => {
       e.preventDefault()

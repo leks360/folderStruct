@@ -1,6 +1,6 @@
 export { FolderNode } from './FolderNode'
-export { AddFamilyBtn } from './AddFamilyBtn'
-export { PrintFamilyTreeBtn } from './PrintFamilyTreeBtn'
+export { AddFamilyBtn } from './Buttons/AddFamilyBtn'
+export { PrintFamilyTreeBtn } from './Buttons/PrintFamilyTreeBtn'
 export { LayoutHeader } from './LayoutHeader'
 export { FamilyDetailsForm } from './FamilyDetailsForm'
 export { TreePreviewModal } from './TreePreviewModal'

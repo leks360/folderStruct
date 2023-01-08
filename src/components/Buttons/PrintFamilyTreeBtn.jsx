@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { Button } from '@mui/material'
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
 import { Modal } from '@mui/material';
-import { TreePreviewModal } from './TreePreviewModal';
-import { Portal } from './Portal';
-
+import { TreePreviewModal } from '../TreePreviewModal';
+import { Portal } from '../Portal';
+import {style} from './Button';
+ 
 
 export const PrintFamilyTreeBtn = () => {
 
@@ -18,7 +19,7 @@ export const PrintFamilyTreeBtn = () => {
 
   return (
     <>
-      <Button variant="contained" component="label" onClick={e => printToPdf()}>
+      <Button sx={style}   variant="contained" component="label" onClick={e => printToPdf()}>
         Print Family Tree
       </Button>
       {/* <Portal>

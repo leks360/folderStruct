@@ -17,7 +17,8 @@ export const FolderStructure = () => {
                     borderBottom: '2px solid black',
                     width: '100%',
                     flexGrow: 1,
-                    overflowY : 'auto'
+                    overflowY : 'auto',
+                   
                 }}
         >
             
