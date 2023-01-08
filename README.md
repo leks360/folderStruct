@@ -6,3 +6,5 @@ Implemented New Features for Folder Structure App.
 
 -Implemented Json Export & import Features
 
+-Basic styling done with main Focus on functionality of the app.
+
